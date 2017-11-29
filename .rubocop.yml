@@ -1,0 +1,82 @@
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - config/application.rb
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+  Enabled: true
+
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r
+
+#################### Metrics ###############################
+
+Metrics/AbcSize:
+  Max: 15
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  ExcludedMethods: []
+  Exclude:
+    - Guardfile
+
+Metrics/BlockNesting:
+  CountBlocks: false
+  Max: 3
+
+Metrics/ClassLength:
+  CountComments: false
+  Max: 200
+
+Metrics/CyclomaticComplexity:
+  Max: 12
+
+Metrics/LineLength:
+  Max: 180
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/ModuleLength:
+  Max: 200
+
+Metrics/ParameterLists:
+  Max: 5
+
+Metrics/PerceivedComplexity:
+  Max: 7
+
+#################### Lint ##################################
+
+Lint/UnusedBlockArgument:
+  IgnoreEmptyBlocks: true
+  AllowUnusedKeywordArguments: true
+
+Lint/UnusedMethodArgument:
+  AllowUnusedKeywordArguments: true
+  IgnoreEmptyMethods: true
+
+#################### Performance ###########################
+
+Performance/DoubleStartEndWith:
+  IncludeActiveSupportAliases: false
+
+Performance/RedundantMerge:
+  MaxKeyValuePairs: 2
+
+#################### Rails #################################
+
+Rails/ActionFilter:
+  EnforcedStyle: action
