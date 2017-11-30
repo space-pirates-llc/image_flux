@@ -2,6 +2,9 @@
 
 require 'bundler/setup'
 require 'ffaker'
+require 'simplecov'
+
+SimpleCov.start
 require 'image_flux'
 
 RSpec.configure do |config|
