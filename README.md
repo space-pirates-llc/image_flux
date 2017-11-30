@@ -1,8 +1,8 @@
 # ImageFlux
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/image_flux`. To experiment with that code, run `bin/console` for an interactive prompt.
+URL builder for [ImageFlux](https://www.sakura.ad.jp/services/imageflux/).
 
-TODO: Delete this and the text above, and describe your gem
+WIP: Provide API client
 
 ## Installation
 
@@ -22,7 +22,15 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Generate resize url for a path
+
+```ruby
+require 'image_flux'
+origin = ImageFlux::Origin.new(domain: 'example.imageflux.jp')
+
+origin.image_url("/original.jpg', width: 100)
+# => https://example.imageflux.jp/c/w=100/original.jpg
+```
 
 ## Development
 
@@ -32,7 +40,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/image_flux.
+Bug reports and pull requests are welcome on GitHub at <https://github.com/space-pirates-llc/image_flux>.
 
 ## License
 
