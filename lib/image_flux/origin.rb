@@ -25,9 +25,10 @@ class ImageFlux::Origin
     opt = ImageFlux::Option.new(options)
 
     path = "#{opt.prefix_path}#{path}" if opt.prefix_path
+    query = opt.to_query
 
     url = base_url.dup
-    url.path = "/c/#{opt.to_query}#{path}"
+    url.path = query.length.zero? ? path : "/c/#{opt.to_query}#{path}"
 
     url
   end
