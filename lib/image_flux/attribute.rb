@@ -29,7 +29,7 @@ class ImageFlux::Attribute
 
     value = case type
             when :string
-              ERB::Util.url_encode(value.to_s)
+              value.to_s
             when :integer
               value.to_i.to_s
             when :float
