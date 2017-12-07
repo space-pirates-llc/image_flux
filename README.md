@@ -1,6 +1,10 @@
 # ImageFlux
 
-URL builder for [ImageFlux](https://www.sakura.ad.jp/services/imageflux/).
+[![Gem](https://img.shields.io/gem/v/image_flux.svg)](https://rubygems.org/gems/image_flux)
+[![CircleCI](https://img.shields.io/circleci/project/github/space-pirates-llc/image_flux.svg)](https://circleci.com/gh/space-pirates-llc/image_flux)
+[![Coverage Status](https://coveralls.io/repos/github/space-pirates-llc/image_flux/badge.svg?branch=master)](https://coveralls.io/github/space-pirates-llc/image_flux?branch=master)
+
+URL builder for [ImageFlux](https://www.sakura.ad.jp/services/imageflux/)®.
 
 WIP: Provide API client
 
@@ -45,3 +49,8 @@ Bug reports and pull requests are welcome on GitHub at <https://github.com/space
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Notation
+
+- ImageFlux is a registered trademark of [SAKURA Internet Inc](https://www.sakura.ad.jp/).
+- Regarding the use of this gem, pixiv Inc and SAKURA Internet Inc makes no responsibility.
