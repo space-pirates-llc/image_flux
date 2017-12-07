@@ -52,5 +52,5 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Notation
 
-- ImageFlux is a registered trademark of [SAKURA Internet Inc](https://www.sakura.ad.jp/).
-- Regarding the use of this gem, pixiv Inc and SAKURA Internet Inc makes no responsibility.
+- ImageFlux is a registered trademark of [SAKURA Internet Inc.](https://www.sakura.ad.jp/).
+- Regarding the use of this gem, pixiv Inc. and SAKURA Internet Inc. makes no responsibility.
