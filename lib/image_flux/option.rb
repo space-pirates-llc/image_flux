@@ -69,9 +69,10 @@ class ImageFlux::Option
     bottom_right: 9
   }
   # output attributes
+  ALLOWED_FORMATS = %w[auto jpg png gif webp:jpeg webp:png]
   attribute :f, :string, default: 'auto', aliases: %i[format] do
     validate do |value|
-      %w[auto jpg png gif webp:jpeg webp:png].include?(value.to_s)
+      "format should be inclusion of #{ALLOWED_FORMATS.join(', ')}" unless ALLOWED_FORMATS.include?(value.to_s)
     end
   end
   attribute :q, :integer, default: 75, aliases: %i[quality]
