@@ -32,7 +32,7 @@ Or install it yourself as:
 require 'image_flux'
 origin = ImageFlux::Origin.new(domain: 'example.imageflux.jp')
 
-origin.image_url("/original.jpg', width: 100)
+origin.image_url('/original.jpg', width: 100)
 # => https://example.imageflux.jp/c/w=100/original.jpg
 ```
 
