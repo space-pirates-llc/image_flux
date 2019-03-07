@@ -31,7 +31,12 @@ class ImageFlux::Option
   attribute :w, :integer, default: nil, aliases: %i[width]
   attribute :h, :integer, default: nil, aliases: %i[height]
   attribute :u, :boolean, default: true, aliases: %i[upscale]
-  attribute :a, :integer, default: 1, aliases: %i[aspect]
+  attribute :a, :integer, default: 1, aliases: %i[aspect], enum:{
+    scale: 0,
+    force_scale: 1,
+    crop: 2,
+    pad: 3
+  }
   attribute :c, :integer_array, default: nil, aliases: %i[crop]
   attribute :cr, :float_array, default: nil, aliases: %i[]
   attribute :g, :integer, default: 4, aliases: %i[gravity], enum: {
