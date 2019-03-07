@@ -103,7 +103,7 @@ RSpec.describe ImageFlux::Attribute do
 
   describe '#querize' do
     [
-      [:string, 'a/b', 'a%2Fb'],
+      [:string, 'a/b', 'a/b'],
       [:integer, 1, '1'],
       [:float, 0.57, '0.57'],
       [:integer_array, [1, 2, 3], '1:2:3'],
