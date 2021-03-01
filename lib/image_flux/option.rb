@@ -55,7 +55,12 @@ class ImageFlux::Option
       'b should be a color code' unless value.to_s =~ %r{\A[0-9a-fA-F]{6}\z}
     end
   end
-  attribute :r, :integer, default: 1, aliases: %i[rotate]
+  ALLOWED_ROTATES = %w[1 2 3 4 5 6 7 8 auto]
+  attribute :r, :string, default: "1", aliases: %i[rotate] do
+    validate do |value|
+      "rotate should be inclusion of #{ALLOWED_ROTATES.join(', ')}" unless ALLOWED_ROTATES.include?(value.to_s)
+    end
+  end
   # overlay attributes
   attribute :l, :string, default: nil
   attribute :lx, :integer, default: nil
