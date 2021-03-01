@@ -21,7 +21,6 @@ class ImageFlux::Origin
   def image_url(path, options = {})
     path = "/#{path}" unless path.start_with?('/')
 
-    options = options.merge(sig: sign(path)) if @signing_secret
     opt = ImageFlux::Option.new(options)
 
     path = "#{opt.prefix_path}#{path}" if opt.prefix_path
@@ -29,6 +28,11 @@ class ImageFlux::Origin
 
     url = base_url.dup
     url.path = query.length.zero? ? path : "/c/#{opt.to_query}#{path}"
+
+    if @signing_secret
+      signed_opt = ImageFlux::Option.new(options.merge(sig: sign(url.path)))
+      url.path = "/c/#{signed_opt.to_query}#{path}"
+    end
 
     url
   end
