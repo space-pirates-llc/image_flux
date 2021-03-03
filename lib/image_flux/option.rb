@@ -14,7 +14,7 @@ class ImageFlux::Option
   end
 
   def self.attribute(name, type, options = {}, &block)
-    attribute = ImageFlux::Attribute.new(name, type, options)
+    attribute = ImageFlux::Attribute.new(name, type, **options)
     attribute.instance_eval(&block) if block_given?
     key_pairs[attribute.name] = attribute
     attribute.aliases.each do |key|
