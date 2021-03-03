@@ -82,6 +82,7 @@ class ImageFlux::Option
   end
   attribute :q, :integer, default: 75, aliases: %i[quality]
   attribute :o, :boolean, default: true, aliases: %i[optimize]
+  attribute :t, :string, default: nil, aliases: %i[through]
 
   attribute :sig, :nonescape_string, default: nil
 
