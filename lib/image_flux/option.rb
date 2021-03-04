@@ -31,7 +31,7 @@ class ImageFlux::Option
   attribute :w, :integer, default: nil, aliases: %i[width]
   attribute :h, :integer, default: nil, aliases: %i[height]
   attribute :u, :boolean, default: true, aliases: %i[upscale]
-  attribute :a, :integer, default: 1, aliases: %i[aspect], enum:{
+  attribute :a, :integer, default: 1, aliases: %i[aspect], enum: {
     scale: 0,
     force_scale: 1,
     crop: 2,
@@ -52,11 +52,11 @@ class ImageFlux::Option
   }
   attribute :b, :string, default: 'ffffff', aliases: %i[background] do
     validate do |value|
-      'b should be a color code' unless value.to_s =~ %r{\A[0-9a-fA-F]{6}\z}
+      'b should be a color code' unless %r{\A[0-9a-fA-F]{6}\z}.match?(value.to_s)
     end
   end
-  ALLOWED_ROTATES = %w[1 2 3 4 5 6 7 8 auto]
-  attribute :r, :string, default: "1", aliases: %i[rotate] do
+  ALLOWED_ROTATES = %w[1 2 3 4 5 6 7 8 auto].freeze
+  attribute :r, :string, default: '1', aliases: %i[rotate] do
     validate do |value|
       "rotate should be inclusion of #{ALLOWED_ROTATES.join(', ')}" unless ALLOWED_ROTATES.include?(value.to_s)
     end
@@ -79,7 +79,7 @@ class ImageFlux::Option
     bottom_right: 9
   }
   # output attributes
-  ALLOWED_FORMATS = %w[auto jpg png gif webp:jpeg webp:png webp:auto]
+  ALLOWED_FORMATS = %w[auto jpg png gif webp:jpeg webp:png webp:auto].freeze
   attribute :f, :string, default: 'auto', aliases: %i[format] do
     validate do |value|
       "format should be inclusion of #{ALLOWED_FORMATS.join(', ')}" unless ALLOWED_FORMATS.include?(value.to_s)
@@ -106,7 +106,7 @@ class ImageFlux::Option
     @values[prefix_attr]
   end
 
-  def to_query(ignore_default: true)
+  def to_query
     errors = []
     queries = @values.to_a.map do |pair|
       attribute = pair.first

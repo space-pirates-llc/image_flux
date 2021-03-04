@@ -33,7 +33,7 @@ RSpec.describe ImageFlux::Origin do
       subject(:origin) { described_class.new(domain: domain, signing_secret: secret) }
 
       it {
-        hash = OpenSSL::HMAC.digest("sha256", secret, "/c/w=100/image.jpg")
+        hash = OpenSSL::HMAC.digest('sha256', secret, '/c/w=100/image.jpg')
         expect(image_url.path).to eq("/c/w=100,sig=1.#{Base64.urlsafe_encode64(hash)}/image.jpg")
       }
     end

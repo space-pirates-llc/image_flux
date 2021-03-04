@@ -7,6 +7,7 @@ require 'image_flux'
 
 class ImageFlux::Origin
   attr_reader :domain, :scheme, :signing_version, :signing_secret
+
   def initialize(domain:, scheme: 'https', signing_version: '1', signing_secret: nil, **_options)
     @domain = domain.to_s
     @scheme = scheme.to_s
