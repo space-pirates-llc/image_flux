@@ -1,82 +1,67 @@
 AllCops:
+  NewCops: enable
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+    - '**/*.rake'
+    - '**/*.rb'
+    - '**/*.gemspec'
+  Exclude:
+    - 'bin/**/*'
+    - 'vendor/bundle/**/*'
   DisplayCopNames: true
-  DisplayStyleGuide: true
 
-Layout/AlignParameters:
+Style/Alias:
+  EnforcedStyle: prefer_alias_method
+
+Layout/ParameterAlignment:
   EnforcedStyle: with_fixed_indentation
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
-  Exclude:
-    - config/application.rb
 
 Style/Documentation:
   Enabled: false
 
+Layout/EmptyLines:
+  Exclude:
+    - '**/Gemfile'
+
 Style/FrozenStringLiteralComment:
-  EnforcedStyle: always
-  Enabled: true
+  Exclude:
+    - '**/Gemfile'
+
+Naming/FileName:
+  Exclude:
+    - '**/Gemfile'
+    - '**/Guardfile'
 
 Style/RegexpLiteral:
   EnforcedStyle: percent_r
-
-#################### Metrics ###############################
-
-Metrics/AbcSize:
-  Max: 15
+  AllowInnerSlashes: false
 
 Metrics/BlockLength:
-  CountComments: false
-  Max: 25
-  ExcludedMethods: []
   Exclude:
-    - Guardfile
+    - 'test/**/*'
+    - 'spec/**/*'
 
-Metrics/BlockNesting:
-  CountBlocks: false
-  Max: 3
-
-Metrics/ClassLength:
-  CountComments: false
-  Max: 200
-
-Metrics/CyclomaticComplexity:
-  Max: 12
-
-Metrics/LineLength:
-  Max: 180
+Layout/LineLength:
+  Max: 240
 
 Metrics/MethodLength:
   Max: 20
 
-Metrics/ModuleLength:
-  Max: 200
+Metrics/AbcSize:
+  Max: 35
 
-Metrics/ParameterLists:
-  Max: 5
+Metrics/CyclomaticComplexity:
+  Max: 18
 
 Metrics/PerceivedComplexity:
-  Max: 7
+  Max: 14
 
-#################### Lint ##################################
+Metrics/ParameterLists:
+  Max: 6
 
-Lint/UnusedBlockArgument:
-  IgnoreEmptyBlocks: true
-  AllowUnusedKeywordArguments: true
-
-Lint/UnusedMethodArgument:
-  AllowUnusedKeywordArguments: true
-  IgnoreEmptyMethods: true
-
-#################### Performance ###########################
-
-Performance/DoubleStartEndWith:
-  IncludeActiveSupportAliases: false
-
-Performance/RedundantMerge:
-  MaxKeyValuePairs: 2
-
-#################### Rails #################################
-
-Rails/ActionFilter:
-  EnforcedStyle: action
+Gemspec/RequiredRubyVersion:
+  Enabled: false
