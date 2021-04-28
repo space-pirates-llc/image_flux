@@ -48,6 +48,9 @@ Metrics/BlockLength:
 Layout/LineLength:
   Max: 240
 
+Metrics/ClassLength:
+  Max: 200
+
 Metrics/MethodLength:
   Max: 20
 
@@ -55,10 +58,10 @@ Metrics/AbcSize:
   Max: 35
 
 Metrics/CyclomaticComplexity:
-  Max: 18
+  Max: 20
 
 Metrics/PerceivedComplexity:
-  Max: 14
+  Max: 20
 
 Metrics/ParameterLists:
   Max: 6

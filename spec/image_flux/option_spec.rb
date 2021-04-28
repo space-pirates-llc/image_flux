@@ -32,7 +32,7 @@ RSpec.describe ImageFlux::Option do
     it 'should have multiple overlay' do
       option.overlay = [
         { h: 200, y: 800, path: '/dev/harukasan.png' },
-        { w: 300, x: 200, path: '/dev/usa.png'},
+        { w: 300, x: 200, path: '/dev/usa.png' }
       ]
 
       expect(option.to_query).to eq('w=100,o=0,r=auto,f=png,a=2,t=gif,l=(h=200,y=800%2Fdev%2Fharukasan.png),l=(w=300,x=200%2Fdev%2Fusa.png)')

@@ -23,24 +23,15 @@ class ImageFlux::Attribute
     @enum ? @enum.fetch(value) { value } : value
   end
 
+  # rubocop:disable Metrics/MethodLength
   def querize(value, ignore_default: true)
     value = expand(value)
     return nil if !@query || (ignore_default && default == value)
 
-    if type == :overlay
-      values = [value].flatten
-      query = values.map do |value|
-        option = value.is_a?(Hash) ? ImageFlux::Option.new(value) : value
-        path = option.path.to_s
-        path = "/#{path}" unless path.start_with?('/')
-        query = "#{option.to_query}#{URI.encode_www_form_component(path)}"
-        "l=(#{query})"
-      end.join(',')
-      return query
-    end
-
     value = case type
-            when :string
+            when :overlay
+              return querize_overlay(value)
+            when :string, Regexp
               value.to_s
             when :integer
               value.to_i.to_s
@@ -52,8 +43,6 @@ class ImageFlux::Attribute
               value.map(&:to_f).join(':')
             when :boolean
               value ? '1' : '0'
-            when Regexp
-              value.to_s
             when :path
               return nil
             else
@@ -61,6 +50,18 @@ class ImageFlux::Attribute
             end
 
     "#{name}=#{value}"
+  end
+  # rubocop:enable Metrics/MethodLength
+
+  def querize_overlay(value)
+    values = [value].flatten
+    values.map do |val|
+      option = val.is_a?(Hash) ? ImageFlux::Option.new(val) : val
+      path = option.path.to_s
+      path = "/#{path}" unless path.start_with?('/')
+      query = "#{option.to_query}#{URI.encode_www_form_component(path)}"
+      "l=(#{query})"
+    end.join(',')
   end
 
   def validate!(value)

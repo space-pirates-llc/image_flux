@@ -28,9 +28,9 @@ class ImageFlux::Option
       key_pairs[key] = attribute
     end
     names = [name] + (options[:aliases] || [])
-    names.each do |name|
-      define_method(:"#{name}") { @values[attribute] }
-      define_method(:"#{name}=") { |val| @values[attribute] = val }
+    names.each do |n|
+      define_method(:"#{n}") { @values[attribute] }
+      define_method(:"#{n}=") { |val| @values[attribute] = val }
     end
 
     attributes.push(attribute)
@@ -43,7 +43,7 @@ class ImageFlux::Option
   # https://console.imageflux.jp/docs/image/conversion-parameters#scaling
   attribute :w, :integer, default: nil, aliases: %i[width]
   attribute :h, :integer, default: nil, aliases: %i[height]
-  attribute :a, :integer, default: 1, aliases: %i[aspect], enum:{
+  attribute :a, :integer, default: 1, aliases: %i[aspect], enum: {
     scale: 0,
     force_scale: 1,
     crop: 2,
@@ -173,14 +173,14 @@ class ImageFlux::Option
   attribute :lossless, :boolean, default: nil, aliases: %i[]
   attribute :s, :integer, default: 1, aliases: %i[strip], enum: {
     strip: 1,
-    strip_without_orientation: 2,
+    strip_without_orientation: 2
   }
 
   # through attributes
   # https://console.imageflux.jp/docs/image/conversion-parameters#through
-  ALLOWED_THROUGH_FORMATS = %w[jpg png gif]
+  ALLOWED_THROUGH_FORMATS = %w[jpg png gif].freeze
   attribute :t, :string, aliases: %i[through] do
-    validate do |value|
+    validate do |_value|
       values = values.to_s.split(':')
       "format should be inclusion of #{ALLOWED_THROUGH_FORMATS.join(', ')}" unless values.all? { |format| ALLOWED_THROUGH_FORMATS.includes?(format) }
     end

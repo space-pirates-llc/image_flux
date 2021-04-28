@@ -103,7 +103,7 @@ RSpec.describe ImageFlux::Attribute do
 
   context 'with regexp value' do
     subject(:attribute) do
-      ImageFlux::Attribute.new(:attr, /^(?:a|b|c)$/)
+      ImageFlux::Attribute.new(:attr, %r{^(?:a|b|c)$})
     end
 
     describe '#validate!' do

@@ -55,8 +55,8 @@ RSpec.describe ImageFlux::Origin do
           w: 100,
           overlay: [
             { x: 10, w: 50, path: 'images/f1.png' },
-            { x: 20, w: 80, path: 'images/f2.png' },
-          ],
+            { x: 20, w: 80, path: 'images/f2.png' }
+          ]
         }
       end
 
