@@ -1,4 +1,5 @@
 AllCops:
+  SuggestExtensions: false
   NewCops: enable
   Include:
     - '**/Gemfile'
@@ -39,6 +40,9 @@ Naming/FileName:
 Style/RegexpLiteral:
   EnforcedStyle: percent_r
   AllowInnerSlashes: false
+
+Style/MutableConstant:
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
