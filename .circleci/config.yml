@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7.2
+      - image: circleci/ruby:3.0.0
     working_directory: ~/repo
 
     steps:
@@ -18,18 +18,20 @@ jobs:
 
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "image_flux.gemspec" }}
-          - v1-dependencies-
+          - v2-dependencies-{{ checksum "image_flux.gemspec" }}
+          - v2-dependencies-
 
       - run:
           name: install dependencies
           command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            bundle config set --local path 'vendor/bundle'
+            bundle install --jobs=4 --retry=3
+            bundle update
 
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "image_flux.gemspec" }}
+          key: v2-dependencies-{{ checksum "image_flux.gemspec" }}
 
       - run:
           name: RSpec
