@@ -22,7 +22,7 @@ class ImageFlux::Origin
   def image_url(path, options = {})
     path = "/#{path}" unless path.start_with?('/')
 
-    opt = ImageFlux::Option.new(options)
+    opt = options.is_a?(ImageFlux::Option) ? options : ImageFlux::Option.new(options)
 
     path = "#{opt.prefix_path}#{path}" if opt.prefix_path
     query = opt.to_query

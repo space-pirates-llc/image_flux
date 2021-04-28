@@ -36,6 +36,17 @@ origin.image_url('/original.jpg', width: 100)
 # => https://example.imageflux.jp/c/w=100/original.jpg
 ```
 
+### Generate option with class
+
+```ruby
+option = ImageFlux::Option.new()
+option.width = 100
+option.overlay = [
+  { w: 100, path: '/hello-world.png' },
+]
+origin.image_url('/original.jpg', option)
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

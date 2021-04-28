@@ -101,6 +101,24 @@ RSpec.describe ImageFlux::Attribute do
     end
   end
 
+  context 'with regexp value' do
+    subject(:attribute) do
+      ImageFlux::Attribute.new(:attr, /^(?:a|b|c)$/)
+    end
+
+    describe '#validate!' do
+      it 'should not raise error on valid value' do
+        errors = attribute.validate!('a')
+        expect(errors.size).to eq(0)
+      end
+
+      it 'should raise error on invalid value' do
+        errors = attribute.validate!(1)
+        expect(errors.size).to eq(1)
+      end
+    end
+  end
+
   describe '#querize' do
     [
       [:string, 'a/b', 'a/b'],
